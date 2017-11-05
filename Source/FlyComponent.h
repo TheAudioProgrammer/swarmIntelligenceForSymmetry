@@ -23,9 +23,9 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
-    void update() override;
+    void update() override;     //update is like void draw except with customizable framerate
 
-    
+    //my member functions
     void initializeFlies (std::vector <std::vector <int>> &theFlies);
     void drawFlies (std::vector <std::vector <int>> &theFlies, Graphics &g);
     void comparePixelValues (std::vector <std::vector <int>> &theFlies, std::vector <int> &theFitnesses);
@@ -34,31 +34,37 @@ public:
     
 
 private:
+    
+    //image to analyze
     Image glass;
     
+    //fly population
     int population;
     
     //random object
     Random r;
     
+    //dimensions are x and y- 2d
     int dimensions;
+    
+    //lower and upper bounds for data space
     int lowerBounds;
     int upperBounds;
+    
+    //increasing this will randomly disperse a fly to look for a better solution
     float disturbanceThresh;
-    std::vector <int> fly;
+    
+    //2d vector implementation for each fly- 1st dimension is which fly, 2nd are the x and y coordinates
     std::vector <std::vector <int>> theFlies;
+    
+    //stores the fitness scores for each fly so we move towards the best solution
     std::vector <int> theFitnesses;
     
-    std::vector <int> fitness;
-    float flyFitness;
+    //how many times the fly checks random x and y positions to find symmetry
+    int numTests;
+    
+    //the index of the fittest fly in the swarm
     int fittestInSwarm;
-    int iterations;
-    int numTrials = 25;
-    
-    int posX, posY;
-    
-    
-    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (FlyComponent)
 };

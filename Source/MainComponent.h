@@ -30,6 +30,7 @@ public:
 
 private:
     
+    //FlyComponent object
     FlyComponent flyComponent;
     
     
